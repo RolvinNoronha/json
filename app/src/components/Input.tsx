@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import { ipcRenderer } from "electron";
+import {useEffect, useState} from "react";
 
 
 const Input = () => {
@@ -17,6 +18,21 @@ const Input = () => {
             ...prevData,
             [id]: value,
         }))
+    }
+
+    const handleSave = async () => {
+
+        window.electronAPI.saveFile(data);
+        setData({
+            product_id: "",
+            title: "",
+            price: "",
+            sku: "",
+        });
+    }
+
+    const handleOpen = async () => {
+        await window.electronAPI.openFile();
     }
 
     return (
@@ -52,7 +68,8 @@ const Input = () => {
                 onChange = {handleChange}
                 id = "sku"
             ></input>
-        <button type="button" onClick={() => console.log(data)}>Click</button>
+        <button type="button" onClick={handleSave}>Save File</button>
+        <button type="button"onClick={handleOpen}>Open File</button>
         </div>
     );
 }

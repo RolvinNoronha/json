@@ -51,7 +51,8 @@ const createWindow = () => {
     
     ipcMain.handle("file-read", () => Data.value);
 
-    mainWindow.loadURL("http://localhost:3000");
+    // mainWindow.loadURL("http://localhost:3000");
+    mainWindow.loadURL(startUrl)
 }
 
 app.whenReady().then(() => {

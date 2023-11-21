@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@400;500&display=swap');
+
+*, 
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;   
+    font-family: "Poppins", sans-serif;
+    background-color: rgb(242, 242, 236);
+
+}
+
+.input_values {
+    display: flex;
+    margin: 1.4rem;
+    flex-direction: column;
+}
+
+.input_values > * {
+    font-size: 1.8rem;
+    margin: 1.2rem 0;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_values > * > label {
+    margin-right: auto;
+}
+
+input {
+    font-family: inherit;
+    color: inherit;
+    border: 1px solid black;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    padding: 1rem 1rem;
+    width: 80%;
+    margin-left: auto;
+}
+
+input:focus {
+    outline: none;
+}
+
+.buttons {
+    margin: 1.2rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(159, 155, 155);
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-right: 1.4rem;
+    width: 12%;
+    font-family: inherit;
+    font-size: 1.6rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+.content {
+    margin: 1.2rem;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 2rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}

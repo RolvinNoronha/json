@@ -3,12 +3,16 @@ const path = require("node:path");
 const url = require("node:url");
 const fs = require("node:fs");
 
+const Data = new Object({
+    value: "",
+});
+
 
 const createWindow = () => {
     const mainWindow = new BrowserWindow({
         title: "My Window",
         height: 600,
-        width: 800,
+        width: 900,
         webPreferences: {
             preload: path.resolve(__dirname, "preload.js"),
             contextIsolation: true,
@@ -16,7 +20,6 @@ const createWindow = () => {
         },
     })
 
-    // mainWindow.webContents.openDevTools();
 
     const startUrl = url.format({
         pathname: path.join(__dirname, "./app/build/index.html"),
@@ -32,7 +35,6 @@ const createWindow = () => {
 
         if (filePath) {
             fs.writeFileSync(filePath, JSON.stringify(data));
-            event.reply('file-saved', filePath);
         }
     });
 
@@ -43,14 +45,11 @@ const createWindow = () => {
         })
 
         if (filePath) {
-            const data = fs.readFileSync(filePath.toString(), {encoding: "utf-8", flag: "r"});
-            // console.log(data)
-            // event.reply("file-read", data);
-            // event.sender.send("file-read", data);
-            // return data;
-            mainWindow.webContents.send("file-saved", data);
+            Data.value = fs.readFileSync(filePath.toString(), {encoding: "utf-8", flag: "r"});
         }
     })
+    
+    ipcMain.handle("file-read", () => Data.value);
 
     mainWindow.loadURL("http://localhost:3000");
 }
